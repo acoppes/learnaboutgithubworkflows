@@ -12,9 +12,9 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      if: github.event.ref_type == 'tag'
       - name: Create Branch
-      run: echo 'Creating Branch ${{env.BRANCH_NAME}} Tag ${{env.TAG_NAME}}'
+        if: github.event.ref_type == 'tag'
+        run: echo 'Creating Branch ${{env.BRANCH_NAME}} Tag ${{env.TAG_NAME}}'
     env:
       TAG_NAME: ${{github.event.ref}}
       BRANCH_NAME: upm-${{github.event.ref}}
