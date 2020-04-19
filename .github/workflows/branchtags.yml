@@ -1,0 +1,20 @@
+name: Create branch for version tags
+on: 
+  push:
+    branches:
+      - master
+    tags:
+      - v[0-9]+.[0.9]+.[0.9]+
+
+jobs:
+  build:
+    name: Branch
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      # This step prints an output (time) from the previous step's action.
+      - name: Create Branch
+        run: echo 'Creating Branch ${{env.BRANCH_NAME}} Tag ${{env.TAG_NAME}}'
+    env:
+      TAG_NAME: ${{github.ref}}
+      BRANCH_NAME: upm-${{github.ref}}
