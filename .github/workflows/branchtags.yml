@@ -17,8 +17,8 @@ jobs:
         if: github.event.ref_type == 'tag'
         run: | 
           echo 'Creating Branch ${{env.BRANCH_NAME}} for Tag ${{env.TAG_NAME}}'
-          git subtree split -P "$PKG_ROOT" -b env.BRANCH_NAME
-          git push -u origin env.BRANCH_NAME
+          git subtree split -P "$PKG_ROOT" -b ${{env.BRANCH_NAME}}
+          git push -u origin ${{env.BRANCH_NAME}}
     env:
       PKG_ROOT: testpackagefolder
       TAG_NAME: ${{github.event.ref}}
