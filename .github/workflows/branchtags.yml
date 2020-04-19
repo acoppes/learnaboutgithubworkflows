@@ -1,4 +1,4 @@
-name: Create branch for version tags
+name: Create UPM Branch for version Tags
 on: 
   create:
     branches:
@@ -12,9 +12,14 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Create Branch
         if: github.event.ref_type == 'tag'
-        run: echo 'Creating Branch ${{env.BRANCH_NAME}} Tag ${{env.TAG_NAME}}'
+        run: | 
+          echo 'Creating Branch ${{env.BRANCH_NAME}} for Tag ${{env.TAG_NAME}}'
+          git subtree split -P "$PKG_ROOT" -b env.BRANCH_NAME
+          git push -u origin env.BRANCH_NAME
     env:
+      PKG_ROOT: testpackagefolder
       TAG_NAME: ${{github.event.ref}}
       BRANCH_NAME: upm-${{github.event.ref}}
