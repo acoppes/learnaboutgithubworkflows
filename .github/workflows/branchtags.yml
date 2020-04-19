@@ -9,16 +9,17 @@ on:
 jobs:
   build:
     name: Branch
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Create Branch
         if: github.event.ref_type == 'tag'
-        run: | 
-          echo 'Creating Branch ${{env.BRANCH_NAME}} for Tag ${{env.TAG_NAME}}'
-          git subtree split -P "$PKG_ROOT" -b ${{env.BRANCH_NAME}}
-          git push -u origin ${{env.BRANCH_NAME}}
+        run: |
+          git branch -d upm &> /dev/null || echo upm branch not found
+          git subtree split -P "$PKG_ROOT" -b upm
+          git checkout upm
+          git tag upm/${{env.TAG_NAME}}
+          git push --tags -f -u origin upm
     env:
       PKG_ROOT: testpackagefolder
       TAG_NAME: ${{github.event.ref}}
