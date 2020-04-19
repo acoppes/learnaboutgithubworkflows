@@ -15,6 +15,7 @@ jobs:
       - name: Create Branch
         if: github.event.ref_type == 'tag'
         run: |
+          echo 'Testing creating another tag'
           git branch -d upm &> /dev/null || echo upm branch not found
           git subtree split -P "$PKG_ROOT" -b upm
           git checkout upm
