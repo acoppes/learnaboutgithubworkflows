@@ -26,5 +26,5 @@ jobs:
     env:
       PKG_NAME: com.gemserk.tests.gactions
       PKG_ROOT: testpackagefolder
-      TAG_NAME: $PKG_NAME-${{github.event.ref}}
+      TAG_NAME: ${{github.event.ref}}
       # BRANCH_NAME: $PKG_NAME-${{github.event.ref}}
