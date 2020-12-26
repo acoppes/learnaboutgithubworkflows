@@ -21,7 +21,7 @@ jobs:
           git branch -d upm &> /dev/null || echo upm branch not found
           git subtree split -P "$PKG_ROOT" -b upm
           git checkout upm
-          git tag ${{env.TAG_NAME}}
+          git tag upm/${{env.TAG_NAME}}
           git push --tags -f -u origin upm
     env:
       PKG_NAME: com.gemserk.tests.gactions
