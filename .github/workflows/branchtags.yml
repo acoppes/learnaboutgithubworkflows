@@ -4,7 +4,7 @@ on:
     branches:
       - master
     tags:
-      - ${{PKG_NAME}}-[0-9].[0-9].[0-9]*
+      - com.gemserk.tests.gactions-[0-9].[0-9].[0-9]*
 
 jobs:
   build:
