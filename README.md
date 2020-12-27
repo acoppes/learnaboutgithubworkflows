@@ -1,3 +1,3 @@
-# HELLO PACKAGE
+# Project 1
 
-Hello package 2
+This is the project 1
