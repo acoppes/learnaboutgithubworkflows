@@ -1,4 +1,4 @@
-name: Create UPM Branch for version Tags
+name: Create UPM Branch for Project 2
 on: 
   create:
     branches:
